@@ -1,0 +1,20 @@
+{
+  "name": "salesimulation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Decision Simulator MVP (Winroom lead magnet): test a decision on simulated buyers and staff before it reaches real customers.",
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "node scripts/check.js",
+    "start": "node server.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.5.0",
+    "express": "^5.3.0",
+    "nodemailer": "^10.3.1"
+  }
+}

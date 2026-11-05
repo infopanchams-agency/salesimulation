@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin metrics · Aerobee Decision Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">A</span> AEROBEE <small>Admin</small></a>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero"><h1>Funnel and spend</h1></section>
+    <form id="login" class="card" novalidate>
+      <div id="login-error" class="alert" role="alert" aria-live="assertive"></div>
+      <div class="field">
+        <label for="token">Admin token</label>
+        <input id="token" type="password" autocomplete="off" required>
+        <span class="hint">Kept in this tab's memory only. Reloading the page clears it.</span>
+      </div>
+      <button class="btn" type="submit">Show metrics</button>
+    </form>
+    <section id="dash" class="hidden" aria-live="polite">
+      <div class="actions"><button id="refresh" class="btn ghost" type="button">Refresh</button><span id="updated" class="fine"></span></div>
+      <h2 class="spaced">Funnel</h2>
+      <div id="funnel" class="metrics"></div>
+      <h2 class="spaced">Spend</h2>
+      <div id="spend" class="metrics"></div>
+    </section>
+  </main>
+  <script src="js/common.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Your simulation · Aerobee Decision Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">A</span> AEROBEE <small>Decision Simulator</small></a>
+      <a class="head-note" href="/">New simulation</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="page-error" class="alert" role="alert"></div>
+
+    <!-- Progress -->
+    <section id="progress-view" class="card" aria-labelledby="progress-title">
+      <p class="eyebrow">Simulation running</p>
+      <h1 id="progress-title" tabindex="-1">Your panel is reacting to the decision</h1>
+      <p class="fine">You can keep this page open. It updates every few seconds and usually takes 10 to 20 minutes.</p>
+      <div class="progress" role="progressbar" aria-label="Simulation progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar"><div id="bar-fill"></div></div>
+      <ol class="stages" id="stages">
+        <li data-stage="queued">Waiting in queue</li>
+        <li data-stage="graph_build">Reading your scenario</li>
+        <li data-stage="simulate">80 simulated people react over 3 rounds</li>
+        <li data-stage="report">Writing your report</li>
+      </ol>
+      <p id="status-live" class="hidden" aria-live="polite"></p>
+    </section>
+
+    <!-- Teaser and email gate -->
+    <section id="teaser-view" class="hidden" aria-labelledby="teaser-title">
+      <div class="card accent">
+        <p class="eyebrow">Report ready</p>
+        <h1 id="teaser-title" tabindex="-1">Here's a first look</h1>
+        <div class="teaser">
+          <div class="stat"><div class="k">Risk level</div><div class="v" id="t-risk"></div></div>
+          <div class="stat"><div class="k">Simulated people</div><div class="v" id="t-agents"></div></div>
+          <div class="stat"><div class="k">Top objection</div><div class="v small" id="t-objection"></div></div>
+        </div>
+        <h2>Get the full report</h2>
+        <p class="fine">The full report has sentiment by round, the top objections, quotes from simulated buyers and staff, and three fixes. We'll email it to you and show it here.</p>
+        <form id="release" novalidate>
+          <div id="release-error" class="alert" role="alert" aria-live="assertive"></div>
+          <div class="field">
+            <label for="email">Work email <span class="req" aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email_hint">
+            <span id="email_hint" class="hint">Use your company email. Free email providers are not accepted.</span>
+          </div>
+          <div class="field">
+            <label class="check" for="consent">
+              <input id="consent" name="consent" type="checkbox" required>
+              <span>Email me this report and occasional follow-ups from Aerobee and Winroom. I can unsubscribe at any time.</span>
+            </label>
+          </div>
+          <button id="release-btn" class="btn" type="submit">Email me the full report</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Full report -->
+    <section id="report-view" class="hidden" aria-labelledby="report-title">
+      <div class="card">
+        <p class="eyebrow" id="r-template"></p>
+        <h1 id="report-title" tabindex="-1">Decision risk report</h1>
+        <p class="fine" id="r-scenario"></p>
+        <p><span id="r-risk" class="pill"></span></p>
+        <p id="r-summary"></p>
+        <p class="fine" id="r-meta"></p>
+        <div id="r-partial" class="alert hidden"></div>
+        <p id="r-sent" class="alert ok hidden" role="status"></p>
+      </div>
+      <div class="card">
+        <h2>Sentiment by round</h2>
+        <div class="bars" id="r-curve"></div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="b-pos"></i>Positive</span><span><i class="b-mix"></i>Mixed</span><span><i class="b-neu"></i>Neutral</span><span><i class="b-neg"></i>Negative</span>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Top objections</h2>
+        <ol class="clean" id="r-objections"></ol>
+      </div>
+      <div class="card">
+        <h2>What simulated people said</h2>
+        <div id="r-quotes"></div>
+      </div>
+      <div class="card">
+        <h2>Friction fixes</h2>
+        <ol class="clean" id="r-fixes"></ol>
+        <h3 class="next">Next step</h3>
+        <p id="r-next"></p>
+      </div>
+      <div class="card accent cta">
+        <p id="r-pitch"></p>
+        <a id="r-cta" class="btn" href="#">Start a free Winroom trial</a>
+      </div>
+      <p class="fine" id="r-disclaimer"></p>
+    </section>
+
+    <!-- Failed -->
+    <section id="failed-view" class="card hidden" aria-labelledby="failed-title">
+      <h1 id="failed-title" tabindex="-1">The simulation did not finish</h1>
+      <p id="failed-text"></p>
+      <a class="btn" href="/">Submit the scenario again</a>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">Directional output from simulated buyers and reps. It is not a forecast of real customer behavior. © Aerobee</div>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/run.js"></script>
+</body>
+</html>

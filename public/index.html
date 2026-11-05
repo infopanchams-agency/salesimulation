@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decision Simulator · Aerobee</title>
+  <meta name="description" content="Test a sales, retention, support or collections decision on 80 simulated buyers and staff before it reaches real customers. Free report by email.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">A</span> AEROBEE <small>Decision Simulator</small></a>
+      <span class="head-note">Free · report by email</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Test before you roll out</p>
+      <h1>See how buyers and your team react to a decision, before real customers do.</h1>
+      <p class="lede">Describe a settlement offer, save offer, refund policy or sales script. 80 simulated customers and staff discuss it over three rounds, and you get a risk report with their top objections.</p>
+      <ol class="steps">
+        <li><b>1. Describe</b>Your team and the change you plan.</li>
+        <li><b>2. Simulate</b>80 people react over 3 rounds. About 10 to 20 minutes.</li>
+        <li><b>3. Get the report</b>Risk level, objections, quotes and fixes.</li>
+      </ol>
+    </section>
+
+    <form id="intake" class="card" novalidate>
+      <div id="form-error" class="alert" role="alert" aria-live="assertive"></div>
+
+      <fieldset>
+        <legend>What are you testing? <span class="req" aria-hidden="true">*</span></legend>
+        <div id="templates" class="tpls" role="radiogroup" aria-label="Decision template">
+          <p class="hint">Loading templates…</p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>About your team</legend>
+        <div class="grid">
+          <div class="field">
+            <label for="role">Your role <span class="req" aria-hidden="true">*</span></label>
+            <select id="role" name="role" required>
+              <option value="">Choose…</option>
+              <option value="sales_leader">Sales leader</option>
+              <option value="support_manager">Support manager</option>
+              <option value="collections_manager">Collections manager</option>
+              <option value="retention_manager">Retention manager</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="industry">Industry <span class="req" aria-hidden="true">*</span></label>
+            <select id="industry" name="industry" required>
+              <option value="">Choose…</option>
+              <option>BPO / debt collection</option>
+              <option>Real estate tele-sales</option>
+              <option>B2B SaaS</option>
+              <option>Logistics</option>
+              <option>Insurance</option>
+              <option>Ed-tech</option>
+              <option>Telecom / ISP</option>
+              <option>Retail banking / microfinance</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="team_size">Team size <span class="req" aria-hidden="true">*</span></label>
+            <input id="team_size" name="team_size" type="number" inputmode="numeric" min="1" max="500" step="1" required aria-describedby="team_size_hint">
+            <span id="team_size_hint" class="hint">1 to 500 people</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>The decision</legend>
+        <div class="field">
+          <label for="company_description">Describe your company and customers <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="company_description" name="company_description" minlength="20" maxlength="400" required aria-describedby="cd_count cd_hint" placeholder="e.g. A 120-seat BPO collecting unsecured personal-loan dues for two NBFCs in North India."></textarea>
+          <span id="cd_hint" class="hint">Do not include customer names, phone numbers or account numbers.</span>
+          <span id="cd_count" class="count" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="decision_text">What decision do you want to test? <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="decision_text" name="decision_text" minlength="20" maxlength="800" required aria-describedby="dt_count" placeholder="e.g. From next month, agents offer a one-time settlement of 70% of dues to borrowers 90+ days overdue."></textarea>
+          <span id="dt_count" class="count" aria-live="polite"></span>
+        </div>
+        <div id="extras" class="extras"></div>
+      </fieldset>
+
+      <div class="actions">
+        <button id="submit" class="btn" type="submit">Run the simulation</button>
+        <span class="fine">No sign-up needed. You'll enter a work email to get the full report.</span>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">Directional output from simulated buyers and reps. It is not a forecast of real customer behavior. © Aerobee</div>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
